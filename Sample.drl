@@ -1,0 +1,564 @@
+package com.sample
+ 
+import java.util.List;
+
+global List<String> diseases;
+global List<String> twoDiseases;
+
+rule "recurrent_headache"
+	salience 100
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.RECURRENT_HEADACHE)
+   
+	then
+	if(!diseases.contains("MOYAMOYA_DISEASE")){
+		diseases.add("MOYAMOYA_DISEASE");
+	}
+	if(!diseases.contains("EPILEPSY")){
+		diseases.add("EPILEPSY");
+		
+	}	System.out.println("Rule 1 was fired");
+	
+end
+
+rule "sudden_severe_headache"
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.SUDDEN_SEVERE_HEACACHE)
+   
+	then
+	if(!diseases.contains("BRAIN_ANEURYSM")){
+		diseases.add("BRAIN_ANEURYSM");
+		}
+	if(!diseases.contains("DURAL_ARTERIOVENOUS_FISTULAS")){
+		diseases.add("DURAL_ARTERIOVENOUS_FISTULAS");
+		
+		} System.out.println("Rule 2 was fired");
+end
+
+rule "nausea_vomiting"
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.NAUSEA_VOMITING)
+   
+	then
+	if(!diseases.contains("BRAIN_ANEURYSM")){
+		diseases.add("BRAIN_ANEURYSM");
+	}
+	if(!diseases.contains("GILOMA")){
+		diseases.add("GILOMA");
+	}
+	if(!diseases.contains("DURAL_ARTERIOVENOUS_FISTULAS")){
+		diseases.add("DURAL_ARTERIOVENOUS_FISTULAS");
+		
+	}System.out.println("Rule 3 was fired");
+end
+
+rule "seizures"
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.SEIZURES)
+   
+	then
+	if(!diseases.contains("BRAIN_ANEURYSM")){
+		diseases.add("BRAIN_ANEURYSM");
+	}
+	if(!diseases.contains("MOYAMOYA_DISEASE")){
+		diseases.add("MOYAMOYA_DISEASE");
+	}
+	if(!diseases.contains("GILOMA")){
+		diseases.add("GILOMA");
+		
+	}System.out.println("Rule 4 was fired");
+end
+
+rule "confusion"
+	salience 1000
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.CONFUSION)
+   
+	then
+	if(!diseases.contains("BRAIN_ANEURYSM")){
+		diseases.add("BRAIN_ANEURYSM");
+	}
+	if(!diseases.contains("EPILEPSY")){
+		diseases.add("EPILEPSY");
+	}
+	if(!diseases.contains("GILOMA")){
+		diseases.add("GILOMA");
+		
+	}System.out.println("Rule 5 was fired");
+end
+
+rule "numbness"
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.NUMBNESS)
+   
+	then
+	if(!diseases.contains("MOYAMOYA_DISEASE")){
+		diseases.add("MOYAMOYA_DISEASE");
+		}
+	if(!diseases.contains("DURAL_ARTERIOVENOUS_FISTULAS")){
+		diseases.add("DURAL_ARTERIOVENOUS_FISTULAS");
+		
+		}System.out.println("Rule 6 was fired");
+end
+
+rule "blurred_vision"
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.BLURRED_VISION)
+   
+	then
+	if(!diseases.contains("BRAIN_ANEURYSM")){
+		diseases.add("BRAIN_ANEURYSM");
+	}
+	if(!diseases.contains("DURAL_ARTERIOVENOUS_FISTULAS")){
+		diseases.add("DURAL_ARTERIOVENOUS_FISTULAS");
+	}
+	if(!diseases.contains("GILOMA")){
+		diseases.add("GILOMA");
+		
+	}System.out.println("Rule 7 was fired");
+end
+
+rule "loss_of_conciousness"
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.LOSS_OF_CONCIOUSNESS)
+   
+	then
+	if(!diseases.contains("BRAIN_ANEURYSM")){
+		diseases.add("BRAIN_ANEURYSM");
+		}
+	if(!diseases.contains("EPILEPSY")){
+		diseases.add("EPILEPSY");
+		
+		}System.out.println("Rule 8 was fired");
+end
+
+rule "fear_anxiety"
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.FEAR_ANXIETY)
+   
+	then
+	if(!twoDiseases.contains("EPILEPSY")){
+		twoDiseases.add("EPILEPSY");
+		
+		}System.out.println("Rule 9 was fired");
+end
+
+rule "memory_loss"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.MEMORY_LOSS)
+   
+	then
+	if(!twoDiseases.contains("GILOMA")){
+		twoDiseases.add("GILOMA");
+		
+	}System.out.println("Rule 10 was fired");
+end
+
+rule "difficulty_with_balance"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.DIFFICULTY_WITH_BALANCE)
+   
+	then
+	if(!twoDiseases.contains("GILOMA")){
+		twoDiseases.add("GILOMA");
+		
+	}System.out.println("Rule 11 was fired");
+end
+
+rule "loss_of_vision"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.LOSS_OF_VISION)
+   
+	then
+	if(!twoDiseases.contains("DURAL_ARTERIOVENOUS_FISTULAS")){
+		twoDiseases.add("DURAL_ARTERIOVENOUS_FISTULAS");
+	
+	}System.out.println("Rule 12 was fired");
+end
+
+rule "speech_difficulties"
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.SPEECH_DIFFICULTIES)
+   
+	then
+	if(!diseases.contains("MOYAMOYA_DISEASE")){
+		diseases.add("MOYAMOYA_DISEASE");
+	}
+	if(!diseases.contains("DURAL_ARTERIOVENOUS_FISTULAS")){
+		diseases.add("DURAL_ARTERIOVENOUS_FISTULAS");
+	}
+	if(!diseases.contains("GILOMA")){
+		diseases.add("GILOMA");
+	
+	}System.out.println("Rule 13 was fired");
+end
+
+rule "personality_change"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.PERSONALITY_CHANGE)
+   
+	then
+	if(!twoDiseases.contains("GILOMA")){
+		twoDiseases.add("GILOMA");
+	
+	}System.out.println("Rule 14 was fired");
+end
+
+rule "starring_spell"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.STARRING_SPEELL)
+   
+	then
+	if(!twoDiseases.contains("EPILEPSY")){
+		twoDiseases.add("EPILEPSY");
+	
+	}System.out.println("Rule 15 was fired");
+end
+
+rule "urinary_incontinence"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.URINARY_INCONTINENCE)
+   
+	then
+	if(!twoDiseases.contains("GILOMA")){
+		twoDiseases.add("GILOMA");
+	
+	}System.out.println("Rule 16 was fired");
+end
+
+rule "visual_disturbance"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.VISUAL_DISTURBANCE)
+   
+	then
+	if(!twoDiseases.contains("MOYAMOYA_DISEASE")){
+		twoDiseases.add("MOYAMOYA_DISEASE");
+		
+	}System.out.println("Rule 17 was fired");
+end
+
+rule "developmental_delay"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.DEVELOPMENTAL_DELAY)
+   
+	then
+	if(!twoDiseases.contains("MOYAMOYA_DISEASE")){
+		twoDiseases.add("MOYAMOYA_DISEASE");
+		
+	}System.out.println("Rule 18 was fired");
+end
+
+rule "uncontrollable_movements"
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.UNCONTR0LLABLE_MOVEMENT)
+   
+	then
+	if(!diseases.contains("MOYAMOYA_DISEASE")){
+		diseases.add("MOYAMOYA_DISEASE");
+		}
+	if(!diseases.contains("EPILEPSY")){
+		diseases.add("EPILEPSY");
+		
+		}System.out.println("Rule 19 was fired");
+end
+
+rule "cognitive_decline"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.COGNITIVE_DECLINE)
+   
+	then
+	if(!twoDiseases.contains("MOYAMOYA_DISEASE")){
+		twoDiseases.add("MOYAMOYA_DISEASE");
+		
+	}System.out.println("Rule 20 was fired");
+end
+
+rule "dropping_eyelid"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.DROPPING_EYELID)
+   
+	then
+	if(!twoDiseases.contains("BRAIN_ANEURYSM")){
+		twoDiseases.add("BRAIN_ANEURYSM");
+		
+	}System.out.println("Rule 21 was fired");
+end
+
+rule "light_sensitivity"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.LIGHT_SENSITIVITY)
+   
+	then
+	if(!twoDiseases.contains("BRAIN_ANEURYSM")){
+		twoDiseases.add("BRAIN_ANEURYSM");
+		
+	}System.out.println("Rule 22 was fired");
+end
+
+rule "stiff_neck"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.STIFF_NECK)
+   
+	then
+	if(!twoDiseases.contains("BRAIN_ANEURYSM")){
+		twoDiseases.add("BRAIN_ANEURYSM");
+		
+	}System.out.println("Rule 23 was fired");
+end
+
+rule "loss_of_vision_and_blurred_vision"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.LOSS_OF_VISION)
+	and d : CausesDrools(cause == CausesDrools.Cause.BLURRED_VISION)
+	
+   
+	then
+	if(!twoDiseases.contains("DURAL_ARTERIOVENOUS_FISTULAS")){
+		twoDiseases.add("DURAL_ARTERIOVENOUS_FISTULAS");
+	
+	}System.out.println("Rule 24 was fired");
+end
+
+rule "dropping_eyelid_and_blurred_vision"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.DROPPING_EYELID)
+	and d : CausesDrools(cause == CausesDrools.Cause.BLURRED_VISION)
+	
+   
+	then
+	if(!diseases.contains("BRAIN_ANEURYSM")){
+		diseases.add("BRAIN_ANEURYSM");
+	
+	}System.out.println("Rule 25 was fired");
+end
+
+rule "nausea_vomiting_and_seizures"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.NAUSEA_VOMITING)
+	and d : CausesDrools(cause == CausesDrools.Cause.SEIZURES)
+	
+   
+	then
+	if(!diseases.contains("BRAIN_ANEURYSM")){
+		diseases.add("BRAIN_ANEURYSM");
+		
+	}System.out.println("Rule 26 was fired");
+end
+
+rule "loss_of_conciousness_and_blurred_vision"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.LOSS_OF_CONCIOUSNESS)
+	and d : CausesDrools(cause == CausesDrools.Cause.BLURRED_VISION)
+	
+   
+	then
+	if(!diseases.contains("BRAIN_ANEURYSM")){
+		diseases.add("BRAIN_ANEURYSM");
+
+	}System.out.println("Rule 27 was fired");
+end
+
+rule "sudden_severe_headache_and_nausea_vomiting"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.NAUSEA_VOMITING)
+	and d : CausesDrools(cause == CausesDrools.Cause.SUDDEN_SEVERE_HEACACHE)
+	
+   
+	then
+	if(!diseases.contains("DURAL_ARTERIOVENOUS_FISTULAS")){
+		diseases.add("DURAL_ARTERIOVENOUS_FISTULAS");
+		System.out.println("Rule 28 was fired");
+	}
+end
+
+rule "loss_of_conciousness_and_confusion"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.LOSS_OF_CONCIOUSNESS)
+	and d : CausesDrools(cause == CausesDrools.Cause.CONFUSION)
+	
+   
+	then
+	if(!diseases.contains("BRAIN_ANEURYSM")){
+		diseases.add("BRAIN_ANEURYSM");
+		System.out.println("Rule 29 was fired");
+	}
+end
+
+rule "blurred_vision_and_nausea_vomiting"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.NAUSEA_VOMITING)
+	and d : CausesDrools(cause == CausesDrools.Cause.BLURRED_VISION)
+	
+   
+	then
+	if(!diseases.contains("DURAL_ARTERIOVENOUS_FISTULAS")){
+		diseases.add("DURAL_ARTERIOVENOUS_FISTULAS");
+		System.out.println("Rule 30 was fired");
+	}
+end
+
+rule "speech_difficulties_and_recurrent_headache"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.SPEECH_DIFFICULTIES)
+	and d : CausesDrools(cause == CausesDrools.Cause.RECURRENT_HEADACHE)
+	
+   
+	then
+	if(!diseases.contains("MOYAMOYA_DISEASE")){
+		diseases.add("MOYAMOYA_DISEASE");
+		System.out.println("Rule 31 was fired");
+	}
+end
+
+rule "numbness_and_blurred_vision"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.NUMBNESS)
+	and d : CausesDrools(cause == CausesDrools.Cause.BLURRED_VISION)
+	
+   
+	then
+	if(!diseases.contains("DURAL_ARTERIOVENOUS_FISTULAS")){
+		diseases.add("DURAL_ARTERIOVENOUS_FISTULAS");
+		System.out.println("Rule 32 was fired");
+	}
+end
+
+rule "loss_of_conciousness_and_sudden_severe_headache"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.LOSS_OF_CONCIOUSNESS)
+	and d : CausesDrools(cause == CausesDrools.Cause.SUDDEN_SEVERE_HEACACHE)
+	
+   
+	then
+	if(!diseases.contains("BRAIN_ANEURYSM")){
+		diseases.add("BRAIN_ANEURYSM");
+		System.out.println("Rule 33 was fired");
+	}
+end
+
+rule "loss_of_conciousness_and_recurrent_headache"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.RECURRENT_HEADACHE)
+	and d : CausesDrools(cause == CausesDrools.Cause.SUDDEN_SEVERE_HEACACHE)
+	
+   
+	then
+	if(!diseases.contains("EPILEPSY")){
+		diseases.add("EPILEPSY");
+		System.out.println("Rule 34 was fired");
+	}
+end
+
+rule "speech_difficulties_and_confusion"
+
+	salience 100
+	
+	when
+	c : CausesDrools(cause == CausesDrools.Cause.SPEECH_DIFFICULTIES)
+	and d : CausesDrools(cause == CausesDrools.Cause.CONFUSION)
+	
+   
+	then
+	if(!twoDiseases.contains("GILOMA")){
+		twoDiseases.add("GILOMA");
+		System.out.println("Rule 35 was fired");
+	}
+end
+
+
+ 
+rule "Last rule"
+	when
+	then
+	CausesDrools.setDiseaseList(diseases);
+	CausesDrools.setTwoDiseaseList(twoDiseases);
+
+end
